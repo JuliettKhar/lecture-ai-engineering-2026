@@ -31,11 +31,16 @@ Moreover, even with a rank of 8, there were instances where the system failed to
 These results suggest that while fine-tuning is effective for enforcing JSON formatting and response styles, it is difficult to entirely prevent the generation of unfounded or incorrect answers.
 
 ### 実装：医療情報管理システムのFAQによるLoRA学習: 
-For a hypothetical medical information management system, a dataset in an FAQ format was prepared, covering five topics: system login, access rights, medical record storage, notifications, and error handling.
-The dataset consisted of 14 training examples, 7 validation examples, and 21 test examples.
-Following LoRA-based training, the adherence to the required format increased from 4.76% to 100%, while content accuracy improved from 4.76% to 85.71%. The training process took 232 seconds, resulting in a final loss value of approximately 0.0157.
-Upon completion of training, the model generated responses in the correct JSON format for all test questions. However, in 3 out of 21 cases, the model produced content-related errors: for questions regarding editing rights for medical records, adding notification recipients, and 24/7 administrative support—topics not fully covered in the FAQ—the model incorrectly returned `needs_review: false`.
-Additionally, the model was tested on 4 questions that were not part of the training set. It correctly identified that questions concerning data storage on overseas servers and biometric authentication required further review; however, it erred in responding to a question about the deletion of medical records (instead describing data storage methods). Conversely, the model provided correct answers to questions regarding physicians' rights to edit medical records—information that was included in the FAQ. This experiment demonstrates that, while the LoRA method is effective for mastering output data formats, challenges remain in determining the correct response when the data does not contain the information needed to answer the query.
+
+| 指標 | 学習前 | 学習後 |
+| --- | ---: | ---: |
+| format_rate | 19.05% | 100% |
+| content_rate | 0% | 80.95% |
+| both_rate | 0% | 80.95% |
+
+Following the training, all 21 items were output in the correct JSON format. Furthermore, for the 6 questions that lacked supporting data in the FAQ, the system correctly identified all of them as requiring `needs_review=true`.
+On the other hand, out of the 15 questions for which answers were available in the FAQ, 4 were incorrectly flagged as requiring further review.
+The training process took 364 seconds, with a final recorded error of 0.014994.
 
 
 - 変えた設定やデータ：
