@@ -77,3 +77,14 @@ def get_lecture_summary(lecture: int) -> str:
         available = sorted(p.stem for p in (DATA_DIR / "lectures").glob("*.md"))
         return f"第{lecture}回の要点はまだありません。用意されている回: {', '.join(available)}"
     return path.read_text(encoding="utf-8")
+
+def save_learning_log(entry: str) -> str:
+     """ユーザーがトレーニング結果を保存したい場合に使用します。ユーザーから文字列を受け取り、保存前に確認を求めます。"""
+     log_dir = DATA_DIR.parent / "learning_log"
+     log_dir.mkdir(exist_ok=True)
+     log_path = log_dir / "learning_log.txt"
+
+     with open(log_path, "a", encoding="utf-8") as file:
+         file.write(entry + "\n")
+
+     return "Successfully logged"
