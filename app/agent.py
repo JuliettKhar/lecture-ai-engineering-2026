@@ -24,6 +24,7 @@ from pydantic_ai.messages import ToolCallPart, ToolReturnPart
 from pydantic_ai.models.google import GoogleModel
 from pydantic_ai.models.test import TestModel
 from pydantic_ai.providers.google import GoogleProvider
+from pydantic_ai import Agent, DeferredToolRequests, DeferredToolResults
 
 from app import tools
 from app.config import MODEL, api_error_message, get_api_key
@@ -35,14 +36,15 @@ INSTRUCTIONS = """\
 - 用語集に見つからないことは、推測で断定せず「用語集にはない」と伝える。
 - 回答の最後に、関係する回（第N回）を示す。
 - 宿題の答えそのものは書かず、考え方のヒントで導く。
+- 確認問題を求められたら、まず講義の要点を短く説明し、その後に問題を1問出す。
 """
 
 # モデルは実行時に渡す（テストではAPIを呼ばない TestModel に差し替えるため）
-agent = Agent(instructions=INSTRUCTIONS)
+agent = Agent(instructions=INSTRUCTIONS, output_type=[str, DeferredToolRequests])
 agent.tool_plain(tools.search_glossary)
 agent.tool_plain(tools.get_lecture_summary)
-
-# TODO(第3回 演習): tools.py に make_quiz を作り、ここで登録しよう
+agent.tool_plain(tools.make_quiz)
+agent.tool_plain(tools.save_learning_log, requires_approval=True)
 
 # 第5回: 使う MCP サーバーの設定ファイル。Claude Desktop や Cursor と同じ "mcpServers" 形式
 MCP_CONFIG = Path(__file__).resolve().parent / "mcp_servers.json"
@@ -129,6 +131,23 @@ def main() -> None:
         print("[tools] MCP サーバー（app/mcp_servers.json）")
     try:
         result = target.run_sync(args.question, model=build_model())
+        if isinstance(result.output, DeferredToolRequests):
+            approvals = {}
+            for approval in result.output.approvals:
+                answer = input("保存しますか？ [y/N]: ")
+                approvals[approval.tool_call_id] = answer.lower() == "y"
+
+            deferred_results = DeferredToolResults(
+                approvals=approvals
+            )
+
+            result = target.run_sync(
+                args.question,
+                model=build_model(),
+                message_history=result.all_messages(),
+                deferred_tool_results=deferred_results
+            )
+
     except ModelHTTPError as e:
         print(api_error_message(e.status_code, str(e.body)[:200]))
         raise SystemExit(1)
