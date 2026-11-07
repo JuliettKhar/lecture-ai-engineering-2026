@@ -5,6 +5,7 @@
 """
 
 import json
+import random
 from functools import cache
 from pathlib import Path
 
@@ -77,6 +78,25 @@ def get_lecture_summary(lecture: int) -> str:
         available = sorted(p.stem for p in (DATA_DIR / "lectures").glob("*.md"))
         return f"第{lecture}回の要点はまだありません。用意されている回: {', '.join(available)}"
     return path.read_text(encoding="utf-8")
+
+
+def make_quiz(lecture: int) -> str:
+    """指定した回の用語から確認問題を1問作る。
+
+    「第2回の確認問題を出して」のように、特定の回の復習問題を
+    求められたときに使う。
+    """
+    glossary = load_glossary()
+    candidates = [term for term in glossary if term["lecture"] == lecture]
+    if not candidates:
+        return f"第{lecture}回に対応する用語が見つかりませんでした。"
+
+    chosen = random.choice(candidates)
+    quiz = {
+        "question": f"「{chosen['term']}」の意味は？",
+        "answer": chosen["definition"],
+    }
+    return json.dumps(quiz, ensure_ascii=False)
 
 def save_learning_log(entry: str) -> str:
      """ユーザーがトレーニング結果を保存したい場合に使用します。ユーザーから文字列を受け取り、保存前に確認を求めます。"""
