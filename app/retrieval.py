@@ -137,6 +137,49 @@ def search(query: str) -> list[dict]:
         """, (sqlite_vec.serialize_float32(vector), RAG_TOP_K))
         return [dict(row) for row in rows]
 
+def search_with_adjacent_pages(query: str) -> list[dict]:
+    """Expand vector hits with adjacent pages from the same document."""
+    hits = search(query)
+    pages = load_pages(RAG_SOURCE)
+
+    page_lookup = {
+        (page["document_id"], page["page"]): page
+        for page in pages
+    }
+
+    # All original vector hits must retain their provenance.
+    hit_ids = {hit["page_id"] for hit in hits}
+
+    results = []
+    seen = set()
+
+    for hit in hits:
+        doc_id = hit["document_id"]
+        page_num = hit["page"]
+
+        for candidate in (
+            hit,
+            page_lookup.get((doc_id, page_num - 1)),
+            page_lookup.get((doc_id, page_num + 1)),
+        ):
+            if candidate is None:
+                continue
+
+            page_id = candidate["page_id"]
+
+            if page_id in seen:
+                continue
+
+            results.append({
+                **candidate,
+                "retrieval_type": (
+                    "vector" if page_id in hit_ids else "adjacent"
+                ),
+            })
+            seen.add(page_id)
+
+    return results
+
 
 def search_graph(query: str) -> dict:
     """ベクトル検索を入口に、前後ページと共通用語で候補を広げる。"""
