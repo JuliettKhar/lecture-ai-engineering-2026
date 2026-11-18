@@ -1,0 +1,201 @@
+{
+  "summary": {
+    "label": "before",
+    "n": 21,
+    "format_rate": 0.19047619047619047,
+    "content_rate": 0.0,
+    "both_rate": 0.0,
+    "seconds": 18.1
+  },
+  "rows": [
+    {
+      "question": "この研究で取り組む課題は？",
+      "raw": "{\"answer\": \"本プロジェクトの目的は、日本語の医療用語の前処理を改善し、医療文書の検索精度を評価することです。\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "日本語の医療用語に対して何を改善しますか",
+      "raw": "{\"answer\": \"Unicode NFKC 正規化\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "検索精度の評価も研究目的に含まれますか",
+      "raw": "{\"answer\": \"確認が必要\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "テキストをどのように正規化しますか",
+      "raw": "{\"answer\": \"Unicode NFKC 正規化\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "NFKCを前処理で使用しますか",
+      "raw": "{\"answer\": \"はい\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "採用する文字正規化方式の名前は？",
+      "raw": "{\"answer\": \"NFKC\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "トークナイザーの比較指標を教えてください",
+      "raw": "{\"answer\": \"トークン化の実験では、複数のトークナイザーについて、医療用語のトークン数を比較します。\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "医療用語について比較する数値は何ですか",
+      "raw": "{\"answer\": \"トークン化の実験では、複数のトークナイザーについて、医療用語のトークン数を比較します\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "複数のトークナイザーをどう比較しますか",
+      "raw": "{\"answer\": \"複数のトークナイザーを比較します\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "ハイブリッド検索には何を使用しますか",
+      "raw": "{\"answer\": \"ハイブリッド検索には BM25 によるキーワード検索とベクトル検索を使用します。\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "BM25と組み合わせる検索方式は何ですか",
+      "raw": "{\"answer\": \"ハイブリッド検索\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "検索はキーワード方式だけですか",
+      "raw": "{\"answer\": \"否\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "どの機関の資料を参照しますか",
+      "raw": "{\"answer\": \"公的機関が公開した日本語の医療関連資料のみを使用します\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "民間ブログを回答の根拠として利用しますか",
+      "raw": "{\"answer\": \"確認が必要\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "回答の根拠として使う資料の言語は何ですか",
+      "raw": "{\"answer\": \"日本語\", \"needs_review\": \"false\"}",
+      "format_ok": false,
+      "format_reason": "wrong_type",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "研究プロジェクトの完成予定日はいつですか",
+      "raw": "{\"answer\": \"確認が必要\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true
+    },
+    {
+      "question": "評価実験の参加者は何人ですか",
+      "raw": "{\"answer\": \"確認が必要\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true
+    },
+    {
+      "question": "ハイブリッド検索の重みは何対何ですか",
+      "raw": "{\"answer\": \"ハイブリッド検索は BM25 によるキーワード検索とベクトル検索の組み合わせであり、重みは BM25 の検索結果の重要性とベクトル検索の検索結果の重要性の比で決定されます。\"",
+      "format_ok": false,
+      "format_reason": "json_error: JSONDecodeError",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true
+    },
+    {
+      "question": "最も性能が高かったトークナイザーはどれですか",
+      "raw": "{\"answer\": \"トークン化の実験では、複数のトークナイザーについて、医療用語のトークン数を比較します。\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true
+    },
+    {
+      "question": "使用するEmbeddingモデルの名前は何ですか",
+      "raw": "{\"answer\": \"None\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true
+    },
+    {
+      "question": "評価で得られたRecall@5はいくつですか",
+      "raw": "{\"answer\": \"確認が必要\"}",
+      "format_ok": false,
+      "format_reason": "missing_key",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": true
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+{
+  "summary": {
+    "label": "after",
+    "n": 21,
+    "format_rate": 1.0,
+    "content_rate": 0.8095238095238095,
+    "both_rate": 0.8095238095238095,
+    "seconds": 24.1
+  },
+  "rows": [
+    {
+      "question": "この研究で取り組む課題は？",
+      "raw": "{\"answer\": \"本プロジェクトの目的は、日本語の医療用語の前処理を改善し、医療文書の検索精度を評価することです。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "日本語の医療用語に対して何を改善しますか",
+      "raw": "{\"answer\": \"本プロジェクトの目的は、日本語の医療用語の前処理を改善し、医療文書の検索精度を評価することです。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "検索精度の評価も研究目的に含まれますか",
+      "raw": "{\"answer\": \"このFAQには記載がありません。確認が必要です。\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "テキストをどのように正規化しますか",
+      "raw": "{\"answer\": \"テキストの前処理では、Unicode NFKC正規化を使用します。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "NFKCを前処理で使用しますか",
+      "raw": "{\"answer\": \"テキストの前処理では、Unicode NFKC正規化を使用します。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "採用する文字正規化方式の名前は？",
+      "raw": "{\"answer\": \"テキストの前処理では、Unicode NFKC正規化を使用します。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "トークナイザーの比較指標を教えてください",
+      "raw": "{\"answer\": \"トークン化の実験では、複数のトークナイザーについて、医療用語のトークン数を比較します。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "医療用語について比較する数値は何ですか",
+      "raw": "{\"answer\": \"このFAQには記載がありません。確認が必要です。\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "複数のトークナイザーをどう比較しますか",
+      "raw": "{\"answer\": \"トークン化の実験では、複数のトークナイザーについて、医療用語のトークン数を比較します。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "ハイブリッド検索には何を使用しますか",
+      "raw": "{\"answer\": \"文書検索では、BM25によるキーワード検索とベクトル検索を組み合わせたハイブリッド検索を使用します。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "BM25と組み合わせる検索方式は何ですか",
+      "raw": "{\"answer\": \"文書検索では、BM25によるキーワード検索とベクトル検索を組み合わせたハイブリッド検索を使用します。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "検索はキーワード方式だけですか",
+      "raw": "{\"answer\": \"このFAQには記載がありません。確認が必要です。\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "どの機関の資料を参照しますか",
+      "raw": "{\"answer\": \"回答の根拠には、公的機関が公開した日本語の医療関連資料のみを使用します。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "民間ブログを回答の根拠として利用しますか",
+      "raw": "{\"answer\": \"このFAQには記載がありません。確認が必要です。\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": false,
+      "both_ok": false,
+      "gold_needs_review": false
+    },
+    {
+      "question": "回答の根拠として使う資料の言語は何ですか",
+      "raw": "{\"answer\": \"回答の根拠には、公的機関が公開した日本語の医療関連資料のみを使用します。\", \"needs_review\": false}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": false
+    },
+    {
+      "question": "研究プロジェクトの完成予定日はいつですか",
+      "raw": "{\"answer\": \"このFAQには記載がありません。確認が必要です。\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": true
+    },
+    {
+      "question": "評価実験の参加者は何人ですか",
+      "raw": "{\"answer\": \"このFAQには記載がありません。確認が必要です。\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": true
+    },
+    {
+      "question": "ハイブリッド検索の重みは何対何ですか",
+      "raw": "{\"answer\": \"このFAQには記載がありません。確認が必要です。\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": true
+    },
+    {
+      "question": "最も性能が高かったトークナイザーはどれですか",
+      "raw": "{\"answer\": \"このFAQには記載がありません。確認が必要です。\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": true
+    },
+    {
+      "question": "使用するEmbeddingモデルの名前は何ですか",
+      "raw": "{\"answer\": \"このFAQには記載がありません。確認が必要です。\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": true
+    },
+    {
+      "question": "評価で得られたRecall@5はいくつですか",
+      "raw": "{\"answer\": \"このFAQには記載がありません。確認が必要です。\", \"needs_review\": true}",
+      "format_ok": true,
+      "format_reason": "",
+      "content_ok": true,
+      "both_ok": true,
+      "gold_needs_review": true
+    }
+  ]
+}
