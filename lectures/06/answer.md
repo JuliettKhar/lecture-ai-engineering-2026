@@ -25,6 +25,6 @@
 - 気づき・疑問：MCP tools can be added without modifying the agent's implementation. Furthermore, I discovered that the successful discovery of a tool does not guarantee it will function correctly: a minor error in a file-searching pattern resulted in an empty list of available lectures. Identifying this issue was made possible by testing with both valid and invalid inputs. I am also interested in the possibility of reducing excessive token consumption by loading only those tool definitions that are actually required.
 
 - 取り組んだレベル：発展
-- やったこと：
-- 結果：
-- 気づき・疑問：
+- やったこと：I reviewed the official documentation for Claude Code MCP and cross-referenced its provisions with the `app/mcp_servers.json` file, paying particular attention to configuration files, local and remote servers, and the scopes of configuration.
+- 結果：Claude Code uses a `.mcp.json` file for project-level configuration, while `~/.claude.json` is used for local and user-level settings. For local servers, the `stdio` type is employed, requiring a `command` and `args`, whereas for remote servers, the `http` type is used, requiring a URL. Additionally, Claude Code supports three scopes: local, project, and user.
+- 気づき・疑問：MCP provides a common protocol for connecting tools, but configuration details differ between clients. 
