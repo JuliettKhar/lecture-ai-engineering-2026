@@ -21,3 +21,6 @@ lectures/02/notebooks/results/**/eval_*.json
 lectures/02/notebooks/results/**/gold.json
 lectures/02/notebooks/results/**/train.jsonl
 lectures/02/notebooks/results/**/test.jsonl
+
+# 第3回: ADK のローカルセッション DB
+adk_agent/.adk/
