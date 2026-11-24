@@ -126,3 +126,39 @@ def search_graph(query: str) -> str:
         return json.dumps({"error": str(e)}, ensure_ascii=False)
     except APIError as e:
         return json.dumps({"error": api_error_message(e.code)}, ensure_ascii=False)
+
+
+def make_quiz(lecture: int) -> str:
+    """指定した回の講義内容から復習用の問題を1問作るための材料を返す。
+    lecture は存在する講義番号を指定する。
+    存在しない番号の場合は、利用可能な講義番号とエラーを返す。
+    返された問題と参考資料を使って、エージェントが解答を作成する。
+    """
+    lectures_dir = DATA_DIR / "lectures"
+    path = lectures_dir / f"{lecture:02d}.md"
+
+    if not path.is_file():
+        available = sorted(
+            int(p.stem)
+            for p in lectures_dir.glob("*md")
+            if p.stem.isdigit()
+        )
+
+        return json.dumps(
+            {
+                "error": "lecture_not_found",
+                "message": f"Lecture {lecture} is not available.",
+                "available_lectures": available,
+            },
+            ensure_ascii=False,
+        )
+
+    content = path.read_text(encoding="utf-8")
+    return json.dumps(
+        {
+            "lecture": lecture,
+            "task": "Create one review question based on this lecture.",
+            "source": content,
+        },
+        ensure_ascii=False,
+    )

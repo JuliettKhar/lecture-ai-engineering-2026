@@ -15,14 +15,14 @@
 <!-- 基礎・実装・発展のどれか1つに取り組めば完了です。 -->
 
 - 取り組んだレベル：基礎 
-- やったこと：
-- 結果：
-- 気づき・疑問：
+- やったこと：Added get_lecture_summary to app/mcp_server.py and exposed it as an MCP tool without changing the agent code or configuration.
+- 結果：The number of available tools increased from 7 to 8. The agent automatically discovered glossary_get_lecture_summary and successfully called it with {'lecture': 2}. All 21 tests passed.
+- 気づき・疑問：I have confirmed that adding a tool on the MCP server side makes it automatically available to the agent. However, increasing the number of tools also leads to a rise in the number of input tokens consumed by their descriptions. I would like to explore the possibility of loading only those tools that are necessary for completing a specific task.
 
 - 取り組んだレベル：実装 
-- やったこと：
-- 結果：
-- 気づき・疑問：
+- やったこと： Registered get_lecture_summary as an MCP tool. Then implemented make_quiz(lecture) in app/tools.py and exposed it through the MCP server. The new tool provides lecture content for generating review questions and returns a structured error for unavailable lecture numbers.
+- 結果：The agent automatically discovered both new tools, increasing the total from 7 to 9. It successfully called glossary_get_lecture_summary({'lecture': 2}) and glossary_make_quiz({'lecture': 2}). For Lecture 99, the quiz tool returned lecture_not_found with the available lecture numbers [1, 2, 3, 4, 6], and the agent correctly explained the error to the user. All 21 tests passed.
+- 気づき・疑問：MCP tools can be added without modifying the agent's implementation. Furthermore, I discovered that the successful discovery of a tool does not guarantee it will function correctly: a minor error in a file-searching pattern resulted in an empty list of available lectures. Identifying this issue was made possible by testing with both valid and invalid inputs. I am also interested in the possibility of reducing excessive token consumption by loading only those tool definitions that are actually required.
 
 - 取り組んだレベル：発展
 - やったこと：
