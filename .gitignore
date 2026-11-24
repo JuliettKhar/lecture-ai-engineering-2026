@@ -15,3 +15,6 @@ learning_log/
 
 # 第5回: 資料から再生成する検索DB
 .cache/rag/
+
+# 第2回: ローカルの学習結果（チェックポイント等）
+lectures/02/notebooks/results/
